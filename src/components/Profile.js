@@ -11,14 +11,18 @@ function Profile() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if(!number || !dateOfBirth || !gender || !age){
+    if (!number || !dateOfBirth || !gender || !age) {
       return alert("Please fill all the fields !")
     }
     try {
       const response = await axios.post("https://mern-login-register-profile.herokuapp.com/profile", {
         number, dateOfBirth, gender, age
       });
-      toast.success(response.data) 
+      setNumber('');
+      setDateOfBirth('');
+      setGender('');
+      setAge('');
+      toast.success(response.data)
     } catch (err) {
       toast.error(err.response.data);
     }
@@ -49,14 +53,16 @@ function Profile() {
           />
         </div>
         <div class="form-group">
-          <label>Gender</label>
-          <input
-            type="text"
-            class="form-control"
-            placeholder="Gender"
-            value={gender}
+          <p>Gender</p>
+          <input type="radio" name="gender" value="gender"
             onChange={e => setGender(e.target.value)}
-          />
+          /> Male &nbsp;
+          <input type="radio" name="gender" value="gender"
+            onChange={e => setGender(e.target.value)}
+          /> Female &nbsp;
+          <input type="radio" name="gender" value="gender"
+            onChange={e => setGender(e.target.value)}
+          /> Transgender
         </div>
         <div class="form-group">
           <label>Age</label>

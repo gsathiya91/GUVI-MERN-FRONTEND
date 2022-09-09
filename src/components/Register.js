@@ -27,7 +27,9 @@ function Register() {
         }
     }
     return (
-        <div className="container">
+        <div>
+            <h2>Register</h2>
+            <div className="container">
             <h2>Create an Account</h2>
             <form onSubmit={handleSubmit}>
                 <div class="form-group">
@@ -79,6 +81,7 @@ function Register() {
                 <button type="submit" class="btn btn-success">Register</button>
                 <p>Already Registered Click here to <Link to="/login">Login</Link></p>
             </form>
+            </div>
         </div>
     )
 }
